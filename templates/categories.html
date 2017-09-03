@@ -3,7 +3,6 @@
     <head><title>Categories</title></head>
     <body>
     <h1>here are the categories</h1>
-    <h3><a href="/">back to categories</a></h3>
         {% for category in categories %}
             <a href="/question/{{ category.id }}">{{ category.name }}</a> <br />
         {% endfor %}
