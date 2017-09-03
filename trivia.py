@@ -12,7 +12,6 @@ host = 'https://qriusity.com'
 def categories():
     categories = []
     for i in [1, 2]:
-
         r = requests.get("{}/v1/categories?page={}&limit=20".format(host, i))
         categories.extend(json.loads(r.text))
     categories = sorted(categories, key=lambda cat: cat['name'])
