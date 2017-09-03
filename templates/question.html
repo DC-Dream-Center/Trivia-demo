@@ -6,10 +6,14 @@
 
         <h3>{{ question.question }}</h3>
         <form id="questionForm">
-            <input type="radio" name="answer" value="option1">{{ question.option1}} <br />
-            <input type="radio" name="answer" value="option2">{{ question.option2}} <br />
-            <input type="radio" name="answer" value="option3">{{ question.option3}} <br />
-            <input type="radio" name="answer" value="option4">{{ question.option4}} <br />
+            <input type="radio" name="answer" id="option1" value="option1">
+                <label for="option1">{{ question.option1}}</label><br />
+            <input type="radio" name="answer" id="option2" value="option2">
+                <label for="option2">{{ question.option2}}</label><br />
+            <input type="radio" name="answer" id="option3" value="option3">
+                <label for="option3">{{ question.option3}}</label><br />
+            <input type="radio" name="answer" id="option4" value="option4">
+                <label for="option4">{{ question.option4}}</label><br />
             <input type="hidden" name="correct", value="option{{ question.answers }}">
             <input type="submit" value="Submit">
         </form>
