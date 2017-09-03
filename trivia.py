@@ -14,6 +14,11 @@ def categories():
 
 @app.route("/question/<category_id>")
 def question(category_id):
-    url = "https://qriusity.com/v1/categories/{}/questions?page={}&limit=1".format(category_id,randint(1, 100))
+    base_url = 'https://qriusity.com/v1/categories'
+    url = "{}/{}/questions?page={}&limit=1".format(
+        base_url,
+        category_id,
+        randint(1, 100)
+    )
     r = requests.get(url)
     return render_template('question.html', question=json.loads(r.text)[0])
