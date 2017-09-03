@@ -5,16 +5,23 @@ from random import randint
 import requests
 app = Flask(__name__)
 
+host = 'https://qriusity.com'
+
 
 @app.route("/")
 def categories():
-    r = requests.get('https://qriusity.com/v1/categories')
-    return render_template('categories.html', categories=json.loads(r.text))
+    categories = []
+    for i in [1, 2]:
+
+        r = requests.get("{}/v1/categories?page={}&limit=20".format(host, i))
+        categories.extend(json.loads(r.text))
+    categories = sorted(categories, key=lambda cat: cat['name'])
+    return render_template('categories.html', categories=categories)
 
 
 @app.route("/question/<category_id>")
 def question(category_id):
-    base_url = 'https://qriusity.com/v1/categories'
+    base_url = "{}/v1/categories".format(host)
     url = "{}/{}/questions?page={}&limit=1".format(
         base_url,
         category_id,
